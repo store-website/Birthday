@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Rubbab</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      overflow-x: hidden;
+    }
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+    }
+    .gift-box {
+      width: 220px;
+      height: 220px;
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+      transition: transform 1s ease;
+    }
+    .gift-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gift-text {
+      font-size: 2rem;
+      color: #d63384;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 2s ease;
+      animation: fadeInUp 2s ease forwards;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .sprinkle {
+      position: fixed;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      background-color: #f0c;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+      z-index: 9999;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+    @keyframes fadeInUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .message-section {
+      padding: 80px 20px;
+      max-width: 600px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    .final-message {
+      font-size: 1.8rem;
+      text-align: center;
+      color: #d63384;
+      padding: 50px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="topSection">
+    <div class="gift-box" id="giftBox">
+      <img src="image.png" alt="Gift Box">
+    </div>
+    <h1 class="gift-text hidden" id="birthdayText">Happy Birthday Rubbab Shah</h1>
+  </div>
+
+  <div class="message-section hidden" id="messageSection">
+    <br>
+    <p> <b><center>Happy Birthday Syeda Rubbab Shah 🎉🎉<br></b><br></center>
+    Many many happy returns of the day 🎊<br>
+    May Allah Bless you with the things that you want and also those one that you don't know but they better for you. Allah Tala Apko Hamesha Khush rakhy , Apky chehry ko hasta Muskurata rakhy or apko Har Tarha k Azmaish ya mushkil Waqat se dour rakhy....Allah Kary Apka Air force Me Admissions bhi ho jay... I'm so lucky to have you in my life. May this new year bring you strength, success, and unforgettable memories. Stay the same awesome person you are!<br><br>
+    Once Again Happy Birthday 🎂💐<br><br>
+    May this day come again and again with more joy and success in your life. May Allah Transform your tears into smiles, pain into strength and worries into happiness.<br><br>
+    Or Janab apky Gift bhi Ready ha 😉</p>
+  </div>
+
+  <div class="final-message hidden" id="finalWish">
+    <b>Once again Happiest Birthday Rubbab Shah 🎉</b>
+  </div>
+
+  <audio id="birthdaySong" src="audio.mp3" preload="auto"></audio>
+
+  <script>
+    const giftBox = document.getElementById("giftBox");
+    const birthdayText = document.getElementById("birthdayText");
+    const messageSection = document.getElementById("messageSection");
+    const finalWish = document.getElementById("finalWish");
+    const birthdaySong = document.getElementById("birthdaySong");
+    const topSection = document.getElementById("topSection");
+
+    let sprinkleInterval;
+
+    function createSprinkle() {
+      const sprinkle = document.createElement("div");
+      sprinkle.classList.add("sprinkle");
+      sprinkle.style.left = Math.random() * 100 + "vw";
+      sprinkle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      sprinkle.style.animationDuration = Math.random() * 3 + 3 + "s";
+      document.body.appendChild(sprinkle);
+      setTimeout(() => sprinkle.remove(), 7000);
+    }
+
+    function startSprinkles() {
+      sprinkleInterval = setInterval(createSprinkle, 100);
+    }
+
+    giftBox.addEventListener("click", () => {
+      giftBox.style.transform = "scale(0)";
+      birthdayText.classList.remove("hidden");
+      birthdaySong.play();
+      startSprinkles();
+
+      setTimeout(() => {
+        messageSection.classList.remove("hidden");
+        document.getElementById("topSection").scrollIntoView({ behavior: 'smooth' });
+      }, 3000);
+
+      setTimeout(() => {
+        finalWish.classList.remove("hidden");
+        topSection.classList.add("hidden"); // hide gift box section after final message
+      }, 12000);
+    });
+  </script>
+</body>
+</html>
