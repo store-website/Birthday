@@ -142,12 +142,12 @@
 
       setTimeout(() => {
         messageSection.classList.remove("hidden");
-        document.getElementById("topSection").scrollIntoView({ behavior: 'smooth' });
+        messageSection.scrollIntoView({ behavior: 'smooth' });
       }, 3000);
 
       setTimeout(() => {
         finalWish.classList.remove("hidden");
-        topSection.classList.add("hidden"); // hide gift box section after final message
+        topSection.classList.add("hidden");
       }, 12000);
     });
   </script>
