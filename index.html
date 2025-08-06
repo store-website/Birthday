@@ -14,6 +14,7 @@
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom, #ffe6f0, #fff);
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     .container {
       height: 100vh;
@@ -83,6 +84,8 @@
       text-align: center;
       color: #d63384;
       padding: 50px 20px;
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards;
     }
   </style>
 </head>
@@ -147,6 +150,7 @@
 
       setTimeout(() => {
         finalWish.classList.remove("hidden");
+        finalWish.scrollIntoView({ behavior: 'smooth' });
         topSection.classList.add("hidden");
       }, 12000);
     });
